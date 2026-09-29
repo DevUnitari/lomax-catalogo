@@ -1,0 +1,76 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929185241
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1. Pods e imagenes de ECR ===
+POD                         IMAGEN                                                                 UID                                    LISTO
+api-6889df56-qt92r          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    636fec0b-d3c8-4ac8-8919-15856d281416   true
+frontend-69f798d68c-ps5ts   000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46   9ab080d1-2a87-4f03-909e-19b9f5f0d3b9   true
+proxy-d8cd8bb6c-78p27       000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46      733377ee-b6b7-4d90-88ac-c85720a513f4   true
+POD                         MENSAJE
+api-6889df56-qt92r          Successfully pulled image "000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46" in 8.895s (8.895s including waiting). Image size
+: 72989258 bytes.
+frontend-69f798d68c-ps5ts   Successfully pulled image "000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46" in 462ms (462ms including waiting). Image size:
+ 20978546 bytes.
+proxy-d8cd8bb6c-78p27       Successfully pulled image "000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46" in 891ms (891ms including waiting). Image size: 20
+974304 bytes.
+  [PASS] todas las imagenes salen de ECR
+  [PASS] catalogo via proxy en EKS: 21 productos
+=== 2. Escalar api de 1 a 3 replicas ===
+deployment.apps/api scaled
+Waiting for deployment "api" rollout to finish: 1 of 3 updated replicas are available...
+Waiting for deployment "api" rollout to finish: 2 of 3 updated replicas are available...
+deployment "api" successfully rolled out
+NAME   READY   UP-TO-DATE   AVAILABLE   AGE
+api    3/3     3            3           3m13s
+POD                         IMAGEN                                                                 UID                                    LISTO
+api-6889df56-7vtnc          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    53c7bd54-4965-4336-b83d-ec9b573b26c6   true
+api-6889df56-hx9nt          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    bc576bc3-03cd-420d-81b7-e6849de4eda5   true
+api-6889df56-qt92r          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    636fec0b-d3c8-4ac8-8919-15856d281416   true
+frontend-69f798d68c-ps5ts   000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46   9ab080d1-2a87-4f03-909e-19b9f5f0d3b9   true
+proxy-d8cd8bb6c-78p27       000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46      733377ee-b6b7-4d90-88ac-c85720a513f4   true
+  [PASS] api con 3 replicas Ready
+Solicitudes atendidas por cada Pod (30 solicitudes):
+  api-6889df56-qt92r : 15
+  api-6889df56-7vtnc : 10
+  api-6889df56-hx9nt : 5
+  [PASS] las solicitudes las atendieron 3 pods distintos
+Logs por Pod:
+[pod/api-6889df56-7vtnc/api] INFO:     10.42.0.12:46170 - "GET /health HTTP/1.0" 200 OK
+[pod/api-6889df56-7vtnc/api] INFO:     10.42.0.12:46188 - "GET /health HTTP/1.0" 200 OK
+[pod/api-6889df56-hx9nt/api] INFO:     10.42.0.12:46146 - "GET /health HTTP/1.0" 200 OK
+[pod/api-6889df56-hx9nt/api] INFO:     10.42.0.12:46184 - "GET /health HTTP/1.0" 200 OK
+[pod/api-6889df56-qt92r/api] INFO:     10.42.0.12:46116 - "GET /health HTTP/1.0" 200 OK
+[pod/api-6889df56-qt92r/api] INFO:     10.42.0.12:46162 - "GET /health HTTP/1.0" 200 OK
+=== 3. Eliminar un Pod ===
+Pod eliminado: api-6889df56-7vtnc   UID antes: 53c7bd54-4965-4336-b83d-ec9b573b26c6
+pod "api-6889df56-7vtnc" deleted
+POD                         IMAGEN                                                                 UID                                    LISTO
+api-6889df56-hx9nt          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    bc576bc3-03cd-420d-81b7-e6849de4eda5   true
+api-6889df56-qt92r          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    636fec0b-d3c8-4ac8-8919-15856d281416   true
+api-6889df56-txb9w          000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    fcbf9d94-0ab4-4cc1-a154-87635a03ae4e   true
+frontend-69f798d68c-ps5ts   000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46   9ab080d1-2a87-4f03-909e-19b9f5f0d3b9   true
+proxy-d8cd8bb6c-78p27       000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46      733377ee-b6b7-4d90-88ac-c85720a513f4   true
+UIDs de api despues: bc576bc3-03cd-420d-81b7-e6849de4eda5, 636fec0b-d3c8-4ac8-8919-15856d281416, fcbf9d94-0ab4-4cc1-a154-87635a03ae4e
+  [PASS] el UID eliminado ya no existe (hay reemplazo)
+  [PASS] replicas recuperadas: 3 Ready
+  [PASS] catalogo funciona tras el reemplazo (21 productos)
+RESULTADO: PASS=7  FAIL=0
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929185302
+**********************

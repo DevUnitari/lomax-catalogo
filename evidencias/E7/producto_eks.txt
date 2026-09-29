@@ -1,0 +1,79 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929185928
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Producto TEC-200 registrado desde la app en EKS: producto_id 33
+  [PASS] TEC-200 existe
+=== A. Antes de recrear los Pods ===
+--- Verificacion antes (producto_id 33) ---
+ producto_id | codigo  |   nombre    |  estado
+-------------+---------+-------------+-----------
+          33 | TEC-200 | Teclado-EKS | PUBLICADO
+(1 row)
+  [PASS] RDS (antes): PUBLICADO
+  [PASS] DynamoDB (antes): LISTA
+  [PASS] DynamoDB (antes): atributo conexion=USB
+  [PASS] S3 (antes): original y miniatura existen
+  [PASS] endpoint (antes) 200 image/jpeg (200 image/jpeg)
+  [PASS] miniatura endpoint == S3 (antes)
+  [PASS] catalogo (antes) incluye el producto 33
+productos en el catalogo (antes): 22
+UIDs antes:
+POD                         UID
+api-6889df56-hx9nt          bc576bc3-03cd-420d-81b7-e6849de4eda5
+api-6889df56-qt92r          636fec0b-d3c8-4ac8-8919-15856d281416
+api-6889df56-txb9w          fcbf9d94-0ab4-4cc1-a154-87635a03ae4e
+frontend-69f798d68c-ps5ts   9ab080d1-2a87-4f03-909e-19b9f5f0d3b9
+proxy-d8cd8bb6c-78p27       733377ee-b6b7-4d90-88ac-c85720a513f4
+=== B. Recrear todos los Pods ===
+pod "api-6889df56-hx9nt" deleted
+pod "api-6889df56-qt92r" deleted
+pod "api-6889df56-txb9w" deleted
+pod "frontend-69f798d68c-ps5ts" deleted
+pod "proxy-d8cd8bb6c-78p27" deleted
+Waiting for deployment "api" rollout to finish: 0 of 3 updated replicas are available...
+Waiting for deployment "api" rollout to finish: 1 of 3 updated replicas are available...
+Waiting for deployment "api" rollout to finish: 2 of 3 updated replicas are available...
+deployment "api" successfully rolled out
+deployment "frontend" successfully rolled out
+deployment "proxy" successfully rolled out
+UIDs despues:
+POD                         UID                                    LISTO
+api-6889df56-ltvb6          e37915cd-ab1c-407f-88af-ad0f53f1e821   true
+api-6889df56-qlfvj          f90e0515-cc0f-4226-bfd1-893d64acc57f   true
+api-6889df56-tlpss          0679475e-b39a-4dc1-936b-dec83da78ff1   true
+frontend-69f798d68c-tss6w   5dc26f94-8e67-45cc-988d-a17950e23a23   true
+proxy-d8cd8bb6c-ns4kq       06a43f1c-f53d-4397-9867-ca02f3da4f18   true
+=== C. Despues de recrear los Pods ===
+--- Verificacion despues (producto_id 33) ---
+ producto_id | codigo  |   nombre    |  estado
+-------------+---------+-------------+-----------
+          33 | TEC-200 | Teclado-EKS | PUBLICADO
+(1 row)
+  [PASS] RDS (despues): PUBLICADO
+  [PASS] DynamoDB (despues): LISTA
+  [PASS] DynamoDB (despues): atributo conexion=USB
+  [PASS] S3 (despues): original y miniatura existen
+  [PASS] endpoint (despues) 200 image/jpeg (200 image/jpeg)
+  [PASS] miniatura endpoint == S3 (despues)
+  [PASS] catalogo (despues) incluye el producto 33
+productos en el catalogo (despues): 22
+RESULTADO: PASS=15  FAIL=0
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929190017
+**********************

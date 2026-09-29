@@ -1,0 +1,40 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929184934
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Tag: f1e5c46   IP de floci: 172.28.0.2   contexto: default
+namespace/lomax created
+secret/lomax-secret created
+configmap/lomax-config created
+deployment.apps/api created
+service/api created
+deployment.apps/frontend created
+service/frontend created
+deployment.apps/proxy created
+service/proxy created
+Waiting for deployment "api" rollout to finish: 0 of 1 updated replicas are available...
+deployment "api" successfully rolled out
+deployment "frontend" successfully rolled out
+deployment "proxy" successfully rolled out
+NAME                        READY   STATUS    RESTARTS   AGE   IP           NODE           NOMINATED NODE   READINESS GATES
+api-6889df56-qt92r          1/1     Running   0          17s   10.42.0.10   5bb1ec9f7cb8   <none>           <none>
+frontend-69f798d68c-ps5ts   1/1     Running   0          17s   10.42.0.11   5bb1ec9f7cb8   <none>           <none>
+proxy-d8cd8bb6c-78p27       1/1     Running   0          17s   10.42.0.12   5bb1ec9f7cb8   <none>           <none>
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929184953
+**********************
