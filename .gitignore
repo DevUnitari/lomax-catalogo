@@ -1,0 +1,6 @@
+.env
+floci-data/
+floci-data-backup/
+lambda/*.zip
+evidencias/*/_*
+scripts/_item.json

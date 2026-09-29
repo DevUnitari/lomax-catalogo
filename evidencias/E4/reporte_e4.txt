@@ -1,0 +1,94 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929172949
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== A. GET /categorias ===
+  [PASS] 200 y 3 categorias
+  [PASS] coincide con RDS
+=== B. Entradas invalidas: no deben dejar registros ===
+  [PASS] codigo duplicado -> 409
+  [PASS] precio negativo -> 400
+  [PASS] categoria inexistente -> 400
+  [PASS] atributos incompletos -> 400
+  [PASS] nombre vacio -> 400
+  [PASS] cuerpo sin campos -> 400
+  [PASS] RDS sin registros parciales (20 -> 20)
+  [PASS] no existe TST-INV en RDS
+=== C. POST /productos valido ===
+  [PASS] 201 y PENDIENTE
+producto_id creado: 28  codigo: TST-172949
+  [PASS] RDS: fila PENDIENTE
+  [PASS] DynamoDB: atributo conexion=USB
+  [PASS] DynamoDB: estado PENDIENTE
+=== D. Consultas de un producto pendiente ===
+  [PASS] detalle 200 y PENDIENTE
+  [PASS] detalle inexistente -> 404
+  [PASS] imagen no disponible -> 404
+=== E. Reprocesar sin original ===
+  [PASS] sin original -> 409
+  [PASS] producto inexistente -> 404
+=== F. Fallo de servicio dependiente: 502 (S3) y 503 (RDS), producto sigue PENDIENTE ===
+Respuesta 502: {"detail":"fallo el servicio s3: An error occurred (NoSuchBucket) when calling the PutObject operation: The specified bucket does not exist.","paso_fallido":"s3"}
+  [PASS] S3 caido -> 502 con paso_fallido=s3
+  [PASS] RDS: sigue PENDIENTE
+Respuesta 503: {"detail":"fallo el servicio rds: failed to resolve host 'host-inexistente': [Errno -2] Name or service not known","paso_fallido":"rds"}
+  [PASS] RDS caida -> 503 con paso_fallido=rds
+=== G. Imagenes invalidas sobre el producto 3 ===
+  [PASS] texto con extension .jpg -> 415
+  [PASS] 6 MB -> 413
+Respuesta imagen corrupta: {"detail":"el archivo no es una imagen valida","paso_fallido":"imagen","producto_id":3,"estado":"PENDIENTE"}
+  [PASS] firma JPEG pero corrupta -> 400
+  [PASS] RDS: producto 3 PENDIENTE
+  [PASS] DynamoDB: estado ERROR
+aws : 
+En C:\lomax-catalogo\scripts\07_probar_api.ps1: 11 Carácter: 38
++ ... , $Clave) { aws s3api head-object --bucket $Bucket --key $Clave *> $n ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+aws: [ERROR]: An error occurred (404) when calling the HeadObject operation: Not Found
+  [PASS] S3: sin miniatura para el 3
+  [PASS] producto inexistente -> 404
+=== H. Completar el registro pendiente 3 (sin crear otro producto) ===
+  [PASS] 200 y PUBLICADO
+  [PASS] no se creo otro producto
+  [PASS] RDS: PUBLICADO
+  [PASS] DynamoDB: LISTA y miniatura_key
+  [PASS] S3: original y miniatura existen
+=== I. GET /productos/3/imagen frente a S3 ===
+  [PASS] 200 y Content-Type image/jpeg (200 image/jpeg)
+MD5 endpoint: AB5D14D4071DEEC708FC67DFAACFBD1E
+MD5 S3      : AB5D14D4071DEEC708FC67DFAACFBD1E
+  [PASS] archivo del endpoint == archivo descargado de S3
+  [PASS] dimensiones 300x200 (esperado 300x200)
+=== J. Reprocesar no duplica objetos ===
+  [PASS] reprocesar -> 200 PUBLICADO
+  [PASS] miniaturas identicas antes y despues
+  [PASS] un solo original del producto 3
+=== K. GET /productos solo publicados ===
+  [PASS] 200
+  [PASS] cantidad == PUBLICADOS en RDS (1)
+  [PASS] el pendiente de prueba no aparece
+  [PASS] producto 3 con atributos y miniatura
+=== Limpieza del producto de prueba ===
+
+  [PASS] producto de prueba eliminado
+RESULTADO: PASS=45  FAIL=0
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929173036
+**********************

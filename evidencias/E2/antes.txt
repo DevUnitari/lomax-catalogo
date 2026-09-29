@@ -1,0 +1,63 @@
+--- RDS: conteo y hash de datos ---
+20|3e3f9f9b07c38097052a23522d534f67
+--- DynamoDB: conteo ---
+20
+--- get-item 1 y 8 ---
+{
+    "Item": {
+        "estado_procesamiento": {
+            "S": "PENDIENTE"
+        },
+        "tipo": {
+            "S": "TECLADO"
+        },
+        "imagen_original_key": {
+            "NULL": true
+        },
+        "atributos": {
+            "M": {
+                "conexion": {
+                    "S": "USB"
+                },
+                "distribucion": {
+                    "S": "US"
+                }
+            }
+        },
+        "miniatura_key": {
+            "NULL": true
+        },
+        "producto_id": {
+            "N": "1"
+        }
+    }
+}
+{
+    "Item": {
+        "estado_procesamiento": {
+            "S": "PENDIENTE"
+        },
+        "tipo": {
+            "S": "MONITOR"
+        },
+        "imagen_original_key": {
+            "NULL": true
+        },
+        "atributos": {
+            "M": {
+                "pulgadas": {
+                    "N": "24"
+                },
+                "resolucion": {
+                    "S": "1920x1080"
+                }
+            }
+        },
+        "miniatura_key": {
+            "NULL": true
+        },
+        "producto_id": {
+            "N": "8"
+        }
+    }
+}

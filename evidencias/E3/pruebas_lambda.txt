@@ -1,0 +1,117 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929170755
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1. Subir originales ===
+=== 2. Invocar la funcion ===
+producto 1 -> StatusCode=200 FunctionError=[]
+{"ok": true, "estado": "LISTA", "producto_id": 1, "miniatura_bucket": "lomax-miniaturas", "miniatura_key": "miniaturas/1.jpg", "ancho": 300, "alto": 200}
+producto 2 -> StatusCode=200 FunctionError=[]
+{"ok": true, "estado": "LISTA", "producto_id": 2, "miniatura_bucket": "lomax-miniaturas", "miniatura_key": "miniaturas/2.jpg", "ancho": 300, "alto": 300}
+producto 3 -> StatusCode=200 FunctionError=[]
+{"ok": false, "estado": "ERROR", "producto_id": 3, "error": "el archivo no es una imagen valida"}
+=== 3. Listado de buckets ===
+originales/1.jpg        47644
+originales/2.png        4255
+originales/3.jpg        21
+miniaturas/1.jpg        5345    "74f736939463d2a6ab84632fe1e14118"
+miniaturas/2.jpg        5998    "cf73a21508da56881181a98e73786336"
+=== 4. Descarga y dimensiones ===
+original 1    : 1200x800   (esperado 1200x800)
+miniatura 1   : 300x200   (esperado 300x200)
+miniatura 2   : 300x300   (esperado 300x300)
+=== 5. Referencias en DynamoDB ===
+{
+    "Item": {
+        "estado_procesamiento": {
+            "S": "LISTA"
+        },
+        "tipo": {
+            "S": "TECLADO"
+        },
+        "imagen_original_key": {
+            "S": "originales/1.jpg"
+        },
+        "atributos": {
+            "M": {
+                "conexion": {
+                    "S": "USB"
+                },
+                "distribucion": {
+                    "S": "US"
+                }
+            }
+        },
+        "miniatura_key": {
+            "S": "miniaturas/1.jpg"
+        },
+        "producto_id": {
+            "N": "1"
+        },
+        "miniatura_ancho": {
+            "N": "300"
+        },
+        "miniatura_alto": {
+            "N": "200"
+        }
+    }
+}
+{
+    "Item": {
+        "estado_procesamiento": {
+            "S": "ERROR"
+        },
+        "tipo": {
+            "S": "TECLADO"
+        },
+        "imagen_original_key": {
+            "S": "originales/3.jpg"
+        },
+        "atributos": {
+            "M": {
+                "conexion": {
+                    "S": "USB"
+                },
+                "distribucion": {
+                    "S": "US"
+                }
+            }
+        },
+        "miniatura_key": {
+            "NULL": true
+        },
+        "producto_id": {
+            "N": "3"
+        },
+        "error_detalle": {
+            "S": "el archivo no es una imagen valida"
+        }
+    }
+}
+=== 6. Repetir invocacion del producto 1 (idempotencia) ===
+producto 1 -> StatusCode=200 FunctionError=[]
+{"ok": true, "estado": "LISTA", "producto_id": 1, "miniatura_bucket": "lomax-miniaturas", "miniatura_key": "miniaturas/1.jpg", "ancho": 300, "alto": 200}
+antes  : miniaturas/1.jpg	5345	"74f736939463d2a6ab84632fe1e14118" | miniaturas/2.jpg	5998	"cf73a21508da56881181a98e73786336"
+despues: miniaturas/1.jpg	5345	"74f736939463d2a6ab84632fe1e14118" | miniaturas/2.jpg	5998	"cf73a21508da56881181a98e73786336"
+IDEMPOTENTE: SI (misma clave, mismo contenido, sin objetos extra)
+=== 7. Archivo invalido: no existe miniatura para el producto 3 ===
+System.Management.Automation.RemoteException
+aws: [ERROR]: An error occurred (404) when calling the HeadObject operation: Not Found
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929170827
+**********************

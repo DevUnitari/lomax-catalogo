@@ -1,0 +1,49 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929174154
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Productos a cargar: 20
+HTTP 200 producto_id=1 foto=fotos\1.jpg estado=PUBLICADO
+HTTP 200 producto_id=2 foto=fotos\2.jpg estado=PUBLICADO
+HTTP 200 producto_id=3 foto=fotos\3.jpg estado=PUBLICADO
+HTTP 200 producto_id=4 foto=fotos\4.jpg estado=PUBLICADO
+HTTP 200 producto_id=5 foto=fotos\5.jpg estado=PUBLICADO
+HTTP 200 producto_id=6 foto=fotos\6.png estado=PUBLICADO
+HTTP 200 producto_id=7 foto=fotos\7.jpg estado=PUBLICADO
+HTTP 200 producto_id=8 foto=fotos\8.jpg estado=PUBLICADO
+HTTP 200 producto_id=9 foto=fotos\9.jpg estado=PUBLICADO
+HTTP 200 producto_id=10 foto=fotos\10.jpg estado=PUBLICADO
+HTTP 200 producto_id=11 foto=fotos\11.jpg estado=PUBLICADO
+HTTP 200 producto_id=12 foto=fotos\12.png estado=PUBLICADO
+HTTP 200 producto_id=13 foto=fotos\13.jpg estado=PUBLICADO
+HTTP 200 producto_id=14 foto=fotos\14.jpg estado=PUBLICADO
+HTTP 200 producto_id=15 foto=fotos\15.jpg estado=PUBLICADO
+HTTP 200 producto_id=16 foto=fotos\16.jpg estado=PUBLICADO
+HTTP 200 producto_id=17 foto=fotos\17.jpg estado=PUBLICADO
+HTTP 200 producto_id=18 foto=fotos\18.png estado=PUBLICADO
+HTTP 200 producto_id=19 foto=fotos\19.jpg estado=PUBLICADO
+HTTP 200 producto_id=20 foto=fotos\20.jpg estado=PUBLICADO
+=== Conteos finales ===
+RDS PUBLICADO         : 20
+DynamoDB LISTA        : 20
+S3 originales/        : 20
+S3 miniaturas/        : 20
+API GET /productos    : 20
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929174212
+**********************
