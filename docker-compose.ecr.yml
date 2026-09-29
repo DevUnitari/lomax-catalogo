@@ -1,0 +1,7 @@
+services:
+  api:
+    image: ${REGISTRO}/lomax-backend:${TAG}
+  frontend:
+    image: ${REGISTRO}/lomax-frontend:${TAG}
+  proxy:
+    image: ${REGISTRO}/lomax-proxy:${TAG}

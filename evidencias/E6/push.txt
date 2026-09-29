@@ -1,0 +1,146 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929182119
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Commit de entrega: f1e5c46
+Registro         : 000000000000.dkr.ecr.us-east-1.localhost:4566
+Cambios sin commitear (vacio = imagen corresponde al commit):
+?? evidencias/E6/
+?? scripts/10_ecr_push.ps1
+=== Login ===
+Login Succeeded
+=== backend -> 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46 ===
+
+The push refers to repository [000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend]
+4a217a54afd1: Preparing
+fa6cbe47d4df: Preparing
+a3d6e13f9805: Preparing
+bf9bbc9296cc: Preparing
+c321a426ca69: Preparing
+b54011271bdb: Preparing
+7ca599ccfc97: Preparing
+a6dc765193a5: Preparing
+7ca599ccfc97: Waiting
+a6dc765193a5: Waiting
+b54011271bdb: Waiting
+a3d6e13f9805: Pushed
+bf9bbc9296cc: Pushed
+4a217a54afd1: Pushed
+c321a426ca69: Pushed
+7ca599ccfc97: Pushed
+b54011271bdb: Pushed
+fa6cbe47d4df: Pushed
+a6dc765193a5: Pushed
+f1e5c46: digest: sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0 size: 1992
+=== frontend -> 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46 ===
+
+The push refers to repository [000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend]
+c746760b20c2: Preparing
+0d853d50b128: Preparing
+947e805a4ac7: Preparing
+811a4dbbf4a5: Preparing
+b8d7d1d22634: Preparing
+e244aa659f61: Preparing
+c56f134d3805: Preparing
+d71eae0084c1: Preparing
+08000c18d16d: Preparing
+c56f134d3805: Waiting
+d71eae0084c1: Waiting
+08000c18d16d: Waiting
+e244aa659f61: Waiting
+b8d7d1d22634: Pushed
+c746760b20c2: Pushed
+811a4dbbf4a5: Pushed
+947e805a4ac7: Pushed
+e244aa659f61: Pushed
+c56f134d3805: Pushed
+d71eae0084c1: Pushed
+08000c18d16d: Pushed
+0d853d50b128: Pushed
+f1e5c46: digest: sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b size: 2197
+=== proxy -> 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46 ===
+
+The push refers to repository [000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy]
+c70b84c13789: Preparing
+0d853d50b128: Preparing
+947e805a4ac7: Preparing
+811a4dbbf4a5: Preparing
+b8d7d1d22634: Preparing
+e244aa659f61: Preparing
+c56f134d3805: Preparing
+d71eae0084c1: Preparing
+08000c18d16d: Preparing
+d71eae0084c1: Waiting
+08000c18d16d: Waiting
+e244aa659f61: Waiting
+c56f134d3805: Waiting
+c70b84c13789: Pushed
+811a4dbbf4a5: Pushed
+c56f134d3805: Pushed
+d71eae0084c1: Pushed
+08000c18d16d: Pushed
+947e805a4ac7: Retrying in 5 seconds
+0d853d50b128: Retrying in 5 seconds
+b8d7d1d22634: Pushed
+e244aa659f61: Pushed
+947e805a4ac7: Retrying in 4 seconds
+0d853d50b128: Retrying in 4 seconds
+947e805a4ac7: Retrying in 3 seconds
+0d853d50b128: Retrying in 3 seconds
+947e805a4ac7: Retrying in 2 seconds
+0d853d50b128: Retrying in 2 seconds
+947e805a4ac7: Retrying in 1 second
+0d853d50b128: Retrying in 1 second
+947e805a4ac7: Pushed
+0d853d50b128: Pushed
+f1e5c46: digest: sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14 size: 2196
+=== ecr describe-images ===
+--- lomax-backend
+f1e5c46 sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0 72987266
+--- lomax-frontend
+f1e5c46 sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b 20976349
+--- lomax-proxy
+f1e5c46 sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14 20972108
+=== ecr list-images ===
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0",
+            "imageTag": "f1e5c46"
+        }
+    ]
+}
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b",
+            "imageTag": "f1e5c46"
+        }
+    ]
+}
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14",
+            "imageTag": "f1e5c46"
+        }
+    ]
+}
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929182222
+**********************

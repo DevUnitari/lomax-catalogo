@@ -1,0 +1,136 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929182334
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Registro: 000000000000.dkr.ecr.us-east-1.localhost:4566   Tag: f1e5c46
+=== 1. Detener servicios propios (floci y RDS siguen arriba) y borrar copias locales ===
+ Container lomax-catalogo-proxy-1 Stopping
+ Container lomax-catalogo-proxy-1 Stopped
+ Container lomax-catalogo-frontend-1 Stopping
+ Container lomax-catalogo-api-1 Stopping
+ Container lomax-catalogo-frontend-1 Stopped
+ Container lomax-catalogo-api-1 Stopped
+Going to remove lomax-catalogo-proxy-1, lomax-catalogo-api-1, lomax-catalogo-frontend-1
+ Container lomax-catalogo-frontend-1 Removing
+ Container lomax-catalogo-proxy-1 Removing
+ Container lomax-catalogo-api-1 Removing
+ Container lomax-catalogo-proxy-1 Removed
+ Container lomax-catalogo-frontend-1 Removed
+ Container lomax-catalogo-api-1 Removed
+Untagged: lomax-backend:dev
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend@sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0
+Deleted: sha256:0d164e86736f4477a1e296a73538fab7c5909e5dd6a882d137b5d68fc875a90a
+Untagged: lomax-frontend:dev
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend@sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b
+Deleted: sha256:a25e8591fc6dcff29fabeb56280043dfbea597e0de3fec2f6f4aa101c600339b
+Untagged: lomax-proxy:dev
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46
+Untagged: 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy@sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14
+Deleted: sha256:1cc4c6bf77e3dd88cb30b64846753acff5f88bc12708b8e391669820e115ad1c
+Imagenes lomax locales tras borrar (debe estar vacio):
+=== 2. Login y pull por referencia remota ===
+Login Succeeded
+f1e5c46: Pulling from lomax-backend
+f072f58012e5: Already exists
+3764a9a7d1e8: Already exists
+b0dc7f87bef1: Already exists
+06ad939ed42b: Already exists
+72ac953c2746: Already exists
+484d2c2b3eae: Already exists
+0ccda92ed3e5: Already exists
+daf4336713fc: Already exists
+Digest: sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0
+Status: Downloaded newer image for 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46
+000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46
+f1e5c46: Pulling from lomax-frontend
+f18232174bc9: Already exists
+61ca4f733c80: Already exists
+b464cfdf2a63: Already exists
+d7e507024086: Already exists
+81bd8ed7ec67: Already exists
+197eb75867ef: Already exists
+34a64644b756: Already exists
+39c2ddfd6010: Already exists
+c2c7f458fb42: Already exists
+Digest: sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b
+Status: Downloaded newer image for 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46
+000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46
+f1e5c46: Pulling from lomax-proxy
+f18232174bc9: Already exists
+61ca4f733c80: Already exists
+b464cfdf2a63: Already exists
+d7e507024086: Already exists
+81bd8ed7ec67: Already exists
+197eb75867ef: Already exists
+34a64644b756: Already exists
+39c2ddfd6010: Already exists
+0d1507ff25bb: Already exists
+Digest: sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14
+Status: Downloaded newer image for 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46
+000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46
+=== 3. Digest remoto (ECR) frente a digest descargado ===
+lomax-backend remoto     : sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0
+lomax-backend descargado : 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend@sha256:6016c228e1d3f0a40608b75f1fd86f614ee2663170355fb6f2e3bc44f7a323d0
+  [PASS] digest coincide: lomax-backend
+lomax-frontend remoto     : sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b
+lomax-frontend descargado : 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend@sha256:0bab1870047c70fbed282d50b29499499005b42ce13c05e37008420fb45e0b6b
+  [PASS] digest coincide: lomax-frontend
+lomax-proxy remoto     : sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14
+lomax-proxy descargado : 000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy@sha256:7df0930879ccb14e99ecf4dfd1b0e11db654935ca760e39bcb1e13304ecc9f14
+  [PASS] digest coincide: lomax-proxy
+=== 4. Ejecutar las imagenes descargadas ===
+ Container lomax-catalogo-floci-1 Running
+ Container lomax-catalogo-frontend-1 Creating
+ Container lomax-catalogo-api-1 Creating
+ Container lomax-catalogo-api-1 Created
+ Container lomax-catalogo-frontend-1 Created
+ Container lomax-catalogo-proxy-1 Creating
+ Container lomax-catalogo-proxy-1 Created
+ Container lomax-catalogo-floci-1 Waiting
+ Container lomax-catalogo-frontend-1 Starting
+ Container lomax-catalogo-frontend-1 Started
+ Container lomax-catalogo-floci-1 Healthy
+ Container lomax-catalogo-api-1 Starting
+ Container lomax-catalogo-api-1 Started
+ Container lomax-catalogo-proxy-1 Starting
+ Container lomax-catalogo-proxy-1 Started
+NAMES                                          IMAGE                                                                  STATUS
+lomax-catalogo-proxy-1                         000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-proxy:f1e5c46      Up 10 seconds
+lomax-catalogo-frontend-1                      000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-frontend:f1e5c46   Up 11 seconds
+lomax-catalogo-api-1                           000000000000.dkr.ecr.us-east-1.localhost:4566/lomax-backend:f1e5c46    Up 10 seconds
+floci-ecr-registry                             26b2eb03618e                                                           Up 4 minutes
+floci-rds-db-903FA0D5D1D047E997218884-dcb4ba   01100f48660a                                                           Up About an hour
+lomax-catalogo-floci-1                         floci/floci:latest                                                     Up About an hour (healthy)
+=== 5. API y frontend funcionando con las imagenes de ECR ===
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Tue, 29 Sep 2026 22:24:00 GMT
+Content-Type: application/json
+Content-Length: 42
+Connection: keep-alive
+x-instance-id: b1a4d127ca93
+
+{"status":"ok","instancia":"b1a4d127ca93"}
+  [PASS] frontend 200
+  [PASS] catalogo via proxy: 21 productos (esperado >= 21)
+RESULTADO: PASS=5  FAIL=0
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929182400
+**********************
