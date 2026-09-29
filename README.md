@@ -117,3 +117,7 @@ Los errores de servicios dependientes incluyen `paso_fallido` (s3, rds, dynamodb
 ## Tablero
 
 Tareas y responsables por etapa: docs/tablero.md. Tablero en GitHub Projects: REEMPLAZAR_ENLACE_TABLERO
+
+## Nota sobre credenciales
+
+Las credenciales del repositorio son de desarrollo local sobre FLOCI (AWS test/test y la contrasena de la RDS emulada). No protegen datos reales. La API las recibe por variables de entorno (Compose usa .env, EKS usa un Secret); solo los scripts de preparacion 01_rds.ps1 y env.ps1 tienen la contrasena de la base emulada escrita para crearla y consultarla.
