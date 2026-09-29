@@ -1,0 +1,43 @@
+:root {
+  --fondo: #f4f6f8;
+  --tarjeta: #ffffff;
+  --texto: #1f2933;
+  --suave: #616e7c;
+  --primario: #0b6bcb;
+  --ok: #1a7f37;
+  --error: #b42318;
+  --aviso: #9a6700;
+  --borde: #d9dee3;
+  --radio: 8px;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, Arial, sans-serif; background: var(--fondo); color: var(--texto); }
+.barra { display: flex; align-items: center; gap: 24px; padding: 12px 24px; background: var(--primario); color: #fff; }
+.barra h1 { margin: 0; font-size: 20px; }
+.barra nav { display: flex; gap: 16px; flex: 1; }
+.barra a { color: #cfe3fa; text-decoration: none; }
+.barra a.activa { color: #fff; font-weight: bold; border-bottom: 2px solid #fff; }
+main { max-width: 1000px; margin: 24px auto; padding: 0 16px; }
+.rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.tarjeta { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 12px; text-decoration: none; color: inherit; display: block; }
+.tarjeta img { width: 100%; height: 150px; object-fit: contain; background: #eef1f4; border-radius: 4px; }
+.tarjeta h3 { margin: 8px 0 4px; font-size: 15px; }
+.tarjeta .precio { color: var(--primario); font-weight: bold; }
+.tarjeta .categoria { color: var(--suave); font-size: 13px; }
+.detalle { background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px; }
+.detalle .foto { max-width: 300px; width: 100%; background: #eef1f4; border-radius: 4px; }
+.detalle .meta { color: var(--suave); font-size: 13px; }
+.detalle dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; }
+.detalle dt { font-weight: bold; }
+form { display: grid; gap: 12px; background: var(--tarjeta); border: 1px solid var(--borde); border-radius: var(--radio); padding: 16px; }
+label { display: grid; gap: 4px; font-weight: bold; font-size: 14px; }
+input, textarea, select { padding: 8px; border: 1px solid var(--borde); border-radius: 4px; font: inherit; font-weight: normal; }
+button { padding: 10px 16px; border: 0; border-radius: 4px; background: var(--primario); color: #fff; font: inherit; cursor: pointer; }
+button:disabled { opacity: .6; cursor: wait; }
+.errores { color: var(--error); margin: 0; padding-left: 20px; }
+.mensaje { margin: 12px 0; }
+.mensaje:empty { display: none; }
+.mensaje.info { color: var(--suave); }
+.mensaje.ok { color: var(--ok); font-weight: bold; }
+.mensaje.error { color: var(--error); font-weight: bold; }
+.mensaje.aviso { color: var(--aviso); background: #fff8e1; border: 1px solid #f0d78c; border-radius: var(--radio); padding: 10px; }

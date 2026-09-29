@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lomax - Catalogo</title>
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <header class="barra">
+    <h1>Lomax SA</h1>
+    <nav>
+      <a href="#/catalogo" data-vista="catalogo">Catalogo</a>
+      <a href="#/registrar" data-vista="registrar">Registrar producto</a>
+    </nav>
+    <small id="instancia"></small>
+  </header>
+
+  <main>
+    <section id="vista-catalogo" hidden>
+      <h2>Catalogo</h2>
+      <div id="estado-catalogo" class="mensaje"></div>
+      <div id="rejilla" class="rejilla"></div>
+    </section>
+
+    <section id="vista-producto" hidden>
+      <a href="#/catalogo">&larr; Volver al catalogo</a>
+      <div id="estado-detalle" class="mensaje"></div>
+      <article id="detalle" class="detalle"></article>
+    </section>
+
+    <section id="vista-registrar" hidden>
+      <h2>Registrar producto</h2>
+      <div id="pendiente" class="mensaje aviso" hidden>
+        Producto pendiente: id <strong id="pendiente-id"></strong>.
+        Puedes elegir otra foto abajo y pulsar Reintentar.
+        <button type="button" id="reintentar">Reintentar</button>
+      </div>
+      <form id="formulario" novalidate>
+        <label>Codigo <input name="codigo"></label>
+        <label>Nombre <input name="nombre"></label>
+        <label>Descripcion <textarea name="descripcion" rows="3"></textarea></label>
+        <label>Precio <input name="precio" type="number" step="0.01" min="0"></label>
+        <label>Categoria <select name="categoria_id" id="categoria"></select></label>
+        <div id="atributos"></div>
+        <label>Fotografia <input type="file" name="foto" id="foto"></label>
+        <ul id="errores" class="errores"></ul>
+        <button type="submit" id="enviar">Registrar</button>
+      </form>
+      <div id="resultado" class="mensaje"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

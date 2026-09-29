@@ -1,0 +1,103 @@
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20260929181449
+Nombre de usuario: DESKTOP-HO881NS\PC0032
+Usuario RunAs: DESKTOP-HO881NS\PC0032
+Nombre de la configuración: 
+Máquina: DESKTOP-HO881NS (Microsoft Windows NT 10.0.26200.0)
+Aplicación host: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 36028
+PSVersion: 5.1.26100.9444
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9444
+BuildVersion: 10.0.26100.9444
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+producto_id del registro valido (TEC-100): 31
+=== A. Registro TEC-100 en RDS ===
+ producto_id | codigo  |      nombre       | precio | categoria_id |  estado
+-------------+---------+-------------------+--------+--------------+-----------
+          31 | TEC-100 | Teclado Prueba E5 |  29.99 |            1 | PUBLICADO
+(1 row)
+  [PASS] RDS: TEC-100 PUBLICADO
+=== B. Registro TEC-100 en DynamoDB (get-item) ===
+{
+    "Item": {
+        "producto_id": {
+            "N": "31"
+        },
+        "tipo": {
+            "S": "TECLADO"
+        },
+        "atributos": {
+            "M": {
+                "conexion": {
+                    "S": "USB"
+                },
+                "distribucion": {
+                    "S": "US"
+                }
+            }
+        },
+        "imagen_original_key": {
+            "S": "originales/31.png"
+        },
+        "miniatura_key": {
+            "S": "miniaturas/31.jpg"
+        },
+        "estado_procesamiento": {
+            "S": "LISTA"
+        },
+        "miniatura_ancho": {
+            "N": "300"
+        },
+        "miniatura_alto": {
+            "N": "170"
+        }
+    }
+}
+  [PASS] DynamoDB: tipo TECLADO
+  [PASS] DynamoDB: estado LISTA
+  [PASS] DynamoDB: miniatura_key = miniaturas/31.jpg
+=== C. Objetos en S3 ===
+clave del original: originales/31.png
+  [PASS] S3: original existe
+  [PASS] S3: miniatura existe
+=== D. Miniatura: S3 frente al endpoint (via proxy) ===
+  [PASS] endpoint 200 image/jpeg (200 image/jpeg)
+MD5 S3      : BD4E6887CA1CA3D93E7FB9BFF89005C6
+MD5 endpoint: BD4E6887CA1CA3D93E7FB9BFF89005C6
+  [PASS] archivo del endpoint == archivo descargado de S3
+  [PASS] dimensiones 300x170 (maximo 300x300)
+=== E. Solicitud y respuesta HTTP del detalle ===
+HTTP/1.1 200 OK
+Server: nginx/1.27.5
+Date: Tue, 29 Sep 2026 22:15:07 GMT
+Content-Type: application/json
+Content-Length: 424
+Connection: keep-alive
+x-instance-id: e6550a2e160d
+
+{"producto_id":31,"codigo":"TEC-100","nombre":"Teclado Prueba E5","descripcion":"fjajfowajfowajof","precio":29.99,"categoria_id":1,"categoria":"Teclados","fecha_registro":"
+2026-09-29T22:02:47.876392","estado":"PUBLICADO","tipo":"TECLADO","atributos":{"conexion":"USB","distribucion":"US"},"imagen":{"estado_procesamiento":"LISTA","miniatura_key
+":"miniaturas/31.jpg","error_detalle":null,"imagen_url":"/productos/31/imagen"}}
+
+=== G. Duplicado y pendientes ===
+  [PASS] RDS: TEC-001 sigue una sola vez
+  [PASS] RDS: 0 productos PENDIENTE (nada incompleto)
+=== H. Conteos: catalogo frente a RDS, DynamoDB y S3 ===
+RDS PUBLICADO : 21
+DynamoDB LISTA: 21
+S3 originales : 21
+S3 miniaturas : 21
+API /productos: 21
+  [PASS] los cinco conteos coinciden
+  [PASS] al menos 20 publicados (21)
+RESULTADO: PASS=13  FAIL=0
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20260929181513
+**********************

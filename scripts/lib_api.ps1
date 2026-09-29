@@ -1,4 +1,4 @@
-$Base = "http://localhost:8000"
+$Base = "http://localhost:8080/api"
 $script:ok = 0
 $script:fallos = 0
 
@@ -28,4 +28,16 @@ function Lista($x) {
   $l = @($x)
   if ($l.Count -eq 1 -and $l[0] -is [System.Array]) { $l = $l[0] }
   return $l
+}
+
+
+function Sql($Consulta) { ((psql -t -A -c $Consulta) -join "").Trim() }
+function Dyn($Id, $Ruta) {
+  ((aws dynamodb get-item --table-name productos_atributos --key "producto_id={N=$Id}" --query $Ruta --output text 2>$null) -join "").Trim()
+}
+function S3Existe($Bucket, $Clave) { aws s3api head-object --bucket $Bucket --key $Clave *> $null; return ($LASTEXITCODE -eq 0) }
+function Dimensiones($Ruta) {
+  Add-Type -AssemblyName System.Drawing
+  $im = [System.Drawing.Image]::FromFile((Resolve-Path $Ruta).Path)
+  $d = "$($im.Width)x$($im.Height)"; $im.Dispose(); $d
 }

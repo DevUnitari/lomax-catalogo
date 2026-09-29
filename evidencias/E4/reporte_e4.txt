@@ -1,6 +1,6 @@
 ﻿**********************
 Inicio de la transcripción de Windows PowerShell
-Hora de inicio: 20260929172949
+Hora de inicio: 20260929175251
 Nombre de usuario: DESKTOP-HO881NS\PC0032
 Usuario RunAs: DESKTOP-HO881NS\PC0032
 Nombre de la configuración: 
@@ -30,7 +30,7 @@ SerializationVersion: 1.1.0.1
   [PASS] no existe TST-INV en RDS
 === C. POST /productos valido ===
   [PASS] 201 y PENDIENTE
-producto_id creado: 28  codigo: TST-172949
+producto_id creado: 30  codigo: TST-175251
   [PASS] RDS: fila PENDIENTE
   [PASS] DynamoDB: atributo conexion=USB
   [PASS] DynamoDB: estado PENDIENTE
@@ -81,7 +81,7 @@ MD5 S3      : AB5D14D4071DEEC708FC67DFAACFBD1E
   [PASS] un solo original del producto 3
 === K. GET /productos solo publicados ===
   [PASS] 200
-  [PASS] cantidad == PUBLICADOS en RDS (1)
+  [PASS] cantidad == PUBLICADOS en RDS (20)
   [PASS] el pendiente de prueba no aparece
   [PASS] producto 3 con atributos y miniatura
 === Limpieza del producto de prueba ===
@@ -90,5 +90,5 @@ MD5 S3      : AB5D14D4071DEEC708FC67DFAACFBD1E
 RESULTADO: PASS=45  FAIL=0
 **********************
 Fin de la transcripción de Windows PowerShell
-Hora de finalización: 20260929173036
+Hora de finalización: 20260929175343
 **********************
